@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Course Glossary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script>
+/* ==========================================================================
+   EDIT YOUR GLOSSARY HERE
+   --------------------------------------------------------------------------
+   To add a term, copy the template at the bottom of the list, paste it
+   above the template, and fill it in.
+     term        : the word, phrase or abbreviation (required)
+     full        : the full form if it is an abbreviation, otherwise ""
+     definition  : a plain-language explanation (required)
+     week        : a number from 1 to 12
+   The page sorts terms A to Z by itself.
+   Keep the comma after each closing curly bracket.
+   ========================================================================== */
+const SITE_TITLE    = "Cybersecurity Governance Glossary";
+const SITE_SUBTITLE = "Abbreviations, terms and phrases, updated every week";
+const TOTAL_WEEKS   = 12;
+
+const TERMS = [
+  { term: "CIA", full: "Confidentiality, Integrity, Availability",
+    definition: "The three core goals of information security: keep data away from the wrong people, keep it accurate and complete, and keep it accessible when needed.",
+    week: 1 },
+
+  { term: "Asset", full: "",
+    definition: "Anything of value an organisation needs to reach its goals, including data, software, hardware, people and reputation.",
+    week: 2 },
+
+  { term: "Asset inventory", full: "",
+    definition: "A register listing every valuable asset, where it lives, who owns it and how it is protected. Also called an asset register.",
+    week: 2 },
+
+  { term: "CMDB", full: "Configuration Management Database",
+    definition: "A tool that records IT components and how they connect. A useful starting point for an asset inventory, but it rarely captures business ownership or classification.",
+    week: 2 },
+
+  { term: "FIPS 199", full: "Federal Information Processing Standard 199",
+    definition: "A US standard that rates the potential impact (Low, Moderate or High) of losing the confidentiality, integrity or availability of a system.",
+    week: 2 },
+
+  { term: "Threat agent", full: "",
+    definition: "The person or thing that triggers a threat, either deliberately (a criminal) or by accident (a staff mistake).",
+    week: 2 },
+
+  { term: "Attack vector", full: "",
+    definition: "The route or method an attacker uses to get in, such as a phishing email, a stolen password or a vulnerable app.",
+    week: 2 },
+
+  { term: "Vishing", full: "Voice phishing",
+    definition: "Social engineering carried out over the phone, often by pretending to be IT support or a bank.",
+    week: 2 },
+
+  { term: "STRIDE", full: "Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege",
+    definition: "A threat modelling checklist from Microsoft. Each letter is a type of threat that breaks one security property.",
+    week: 2 },
+
+  { term: "CVE", full: "Common Vulnerabilities and Exposures",
+    definition: "A unique public ID for a known vulnerability, for example CVE-2021-44228 (Log4Shell).",
+    week: 2 },
+
+  { term: "CVSS", full: "Common Vulnerability Scoring System",
+    definition: "A score from 0.0 to 10.0 describing how technically severe a vulnerability is. It measures severity, not business risk.",
+    week: 2 },
+
+  { term: "KEV", full: "Known Exploited Vulnerabilities",
+    definition: "A catalogue run by US CISA listing vulnerabilities that attackers are actively exploiting, which makes them a top priority to patch.",
+    week: 2 },
+
+  { term: "ALE", full: "Annualised Loss Expectancy",
+    definition: "The expected yearly loss from a risk: the single loss expectancy multiplied by how many times a year the event is expected to happen.",
+    week: 2 },
+
+  { term: "MFA", full: "Multi-Factor Authentication",
+    definition: "Logging in with two or more kinds of proof, such as a password plus a code on your phone.",
+    week: 2 },
+
+  { term: "Defence in depth", full: "",
+    definition: "Layering several independent controls so that if one fails, the others still protect the asset.",
+    week: 2 },
+
+  /* TEMPLATE: copy the 3 lines below, paste them above this comment, fill them in
+  { term: "", full: "",
+    definition: "",
+    week: 3 },
+  */
+];
+</script>
+
+<style>
+  :root {
+    --bg: #f6f7fb; --surface: #ffffff; --surface-2: #f0f2f8;
+    --text: #141826; --muted: #5d6478; --border: #e2e5ef; --faint: #c9cedc;
+    --accent: #3d5afe; --accent-soft: #e8ecff; --mark: #ffe58a;
+    --new: #0f9d58; --new-soft: #e3f6ec;
+    --shadow: 0 1px 2px rgba(20,24,38,.04), 0 6px 24px rgba(20,24,38,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1117; --surface: #161a23; --surface-2: #1d2230;
+      --text: #e8eaf2; --muted: #9aa1b5; --border: #2a3040; --faint: #3a4152;
+      --accent: #7c93ff; --accent-soft: #232b4a; --mark: #6b5a12;
+      --new: #4cd38a; --new-soft: #17301f;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 24px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1117; --surface: #161a23; --surface-2: #1d2230;
+    --text: #e8eaf2; --muted: #9aa1b5; --border: #2a3040; --faint: #3a4152;
+    --accent: #7c93ff; --accent-soft: #232b4a; --mark: #6b5a12;
+    --new: #4cd38a; --new-soft: #17301f;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 24px rgba(0,0,0,.25);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.6 Inter, system-ui, sans-serif; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 40px 16px 80px; }
+
+  header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 28px; }
+  .eyebrow { font: 500 12px/1 "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; margin: 10px 0 6px; letter-spacing: -.02em; }
+  .subtitle { color: var(--muted); margin: 0; }
+  .theme-btn { flex-shrink: 0; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; cursor: pointer; }
+
+  .controls { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 12px 0; display: grid; gap: 12px; }
+  .search { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0 14px; box-shadow: var(--shadow); }
+  .search:focus-within { border-color: var(--accent); }
+  .search svg { flex-shrink: 0; color: var(--muted); }
+  .search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; font-size: 16px; padding: 14px 0; }
+  .search kbd { font: 12px "JetBrains Mono", monospace; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; padding: 2px 6px; }
+  .clear { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 18px; display: none; }
+
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .chip { border: 1px solid var(--border); background: var(--surface); color: var(--muted); border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+  .chip:disabled { color: var(--faint); cursor: default; }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .chip .n { opacity: .7; margin-left: 4px; font-size: 12px; }
+  .letters { display: flex; flex-wrap: wrap; gap: 2px; }
+  .letters button { width: 28px; height: 28px; border: 0; border-radius: 6px; background: none; color: var(--text); font: 600 13px Inter, sans-serif; cursor: pointer; }
+  .letters button:hover:not(:disabled) { background: var(--accent-soft); color: var(--accent); }
+  .letters button:disabled { color: var(--border); cursor: default; }
+  .count { color: var(--muted); font-size: 13px; }
+
+  .group-letter { font: 700 13px "JetBrains Mono", monospace; color: var(--accent); margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); scroll-margin-top: 190px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; box-shadow: var(--shadow); display: grid; grid-template-columns: 220px 1fr; gap: 6px 24px; }
+  .term { font-weight: 700; font-size: 16px; word-break: break-word; }
+  .full { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .def { margin: 0; }
+  .tags { grid-column: 2; display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .tag { font-size: 11.5px; padding: 2px 8px; border-radius: 6px; background: var(--surface-2); color: var(--muted); }
+  .tag.new { background: var(--new-soft); color: var(--new); font-weight: 600; }
+  mark { background: var(--mark); color: inherit; border-radius: 3px; padding: 0 1px; }
+
+  .empty { text-align: center; color: var(--muted); padding: 60px 0; }
+  footer { margin-top: 40px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  @media (max-width: 640px) {
+    .card { grid-template-columns: 1fr; }
+    .tags { grid-column: 1; }
+    .search kbd { display: none; }
+    .group-letter { scroll-margin-top: 260px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">A to Z Glossary</div>
+      <h1 id="title"></h1>
+      <p class="subtitle" id="subtitle"></p>
+    </div>
+    <button class="theme-btn" id="themeBtn">Dark mode</button>
+  </header>
+
+  <div class="controls">
+    <label class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Search terms, full forms or explanations" autocomplete="off">
+      <button class="clear" id="clear" aria-label="Clear search">×</button>
+      <kbd>/</kbd>
+    </label>
+    <div class="row" id="filters"></div>
+    <div class="row" style="justify-content:space-between">
+      <div class="letters" id="letters"></div>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <main id="list"></main>
+  <footer id="footer"></footer>
+</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const data = TERMS.filter(t => t.term && t.definition)
+    .sort((a, b) => a.term.localeCompare(b.term, undefined, { sensitivity: "base" }));
+  const latestWeek = Math.max(0, ...data.map(t => +t.week || 0));
+  let activeFilter = "all";
+
+  $("title").textContent = SITE_TITLE;
+  $("subtitle").textContent = SITE_SUBTITLE;
+  $("footer").textContent = latestWeek ? "Last updated: Week " + latestWeek : "";
+  document.title = SITE_TITLE;
+
+  // Filter chips: All + Week 1 to TOTAL_WEEKS (weeks with no terms yet are greyed out)
+  const perWeek = w => data.filter(t => +t.week === w).length;
+  let chipHtml = `<button class="chip" data-k="all" aria-pressed="true">All<span class="n">${data.length}</span></button>`;
+  for (let w = 1; w <= TOTAL_WEEKS; w++) {
+    const n = perWeek(w);
+    chipHtml += `<button class="chip" data-k="${w}" aria-pressed="false" ${n ? "" : "disabled"}>Week ${w}${n ? `<span class="n">${n}</span>` : ""}</button>`;
+  }
+  $("filters").innerHTML = chipHtml;
+  $("filters").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b || b.disabled) return;
+    activeFilter = b.dataset.k;
+    $("filters").querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+    render();
+  });
+
+  function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c])); }
+  function norm(s) { return String(s ?? "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+  function highlight(text, words) {
+    const html = esc(text);
+    if (!words.length) return html;
+    const re = new RegExp("(" + words.map(w => esc(w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")", "gi");
+    return html.replace(re, "<mark>$1</mark>");
+  }
+  function letterOf(t) { const c = t.term.trim()[0].toUpperCase(); return /[A-Z]/.test(c) ? c : "#"; }
+
+  function render() {
+    const raw = $("q").value.trim();
+    const words = norm(raw).split(/\s+/).filter(Boolean);
+    $("clear").style.display = raw ? "block" : "none";
+
+    const rows = data.filter(t => {
+      if (activeFilter !== "all" && String(t.week) !== activeFilter) return false;
+      const hay = norm([t.term, t.full, t.definition].join(" "));
+      return words.every(w => hay.includes(w));
+    });
+
+    if (words.length) {
+      const q = norm(raw);
+      const score = t => norm(t.term) === q ? 0 : norm(t.term).startsWith(q) ? 1 : norm(t.term).includes(q) ? 2 : 3;
+      rows.sort((a, b) => score(a) - score(b) || a.term.localeCompare(b.term));
+    }
+
+    $("count").textContent = `${rows.length} of ${data.length} terms`;
+
+    const present = new Set(rows.map(letterOf));
+    $("letters").innerHTML = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(L =>
+      `<button data-l="${L}" ${present.has(L) ? "" : "disabled"}>${L}</button>`).join("");
+
+    if (!rows.length) {
+      $("list").innerHTML = `<div class="empty">No terms match "${esc(raw)}".</div>`;
+      return;
+    }
+
+    let html = "", last = "";
+    const seen = new Set();
+    for (const t of rows) {
+      const L = letterOf(t);
+      let anchor = "";
+      if (!words.length && L !== last) { html += `<div class="group-letter" id="L-${L}">${L}</div>`; last = L; }
+      else if (words.length && !seen.has(L)) { anchor = ` id="L-${L}"`; seen.add(L); }
+      html += `<article class="card"${anchor}>
+        <div><div class="term">${highlight(t.term, words)}</div>
+        ${t.full ? `<div class="full">${highlight(t.full, words)}</div>` : ""}</div>
+        <p class="def">${highlight(t.definition, words)}</p>
+        <div class="tags">
+          ${+t.week === latestWeek ? `<span class="tag new">New</span>` : ""}
+          ${t.week ? `<span class="tag">Week ${esc(t.week)}</span>` : ""}
+        </div></article>`;
+    }
+    $("list").innerHTML = html;
+  }
+
+  $("letters").addEventListener("click", e => {
+    const b = e.target.closest("button[data-l]"); if (!b) return;
+    document.getElementById("L-" + b.dataset.l)?.scrollIntoView({ behavior: "smooth" });
+  });
+  $("q").addEventListener("input", render);
+  $("clear").addEventListener("click", e => { e.preventDefault(); $("q").value = ""; render(); $("q").focus(); });
+  document.addEventListener("keydown", e => {
+    if (e.key === "/" && document.activeElement !== $("q")) { e.preventDefault(); $("q").focus(); }
+    if (e.key === "Escape") { $("q").value = ""; render(); }
+  });
+
+  // Dark mode toggle (remembers the choice)
+  const root = document.documentElement;
+  const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  try { const s = localStorage.getItem("glossary-theme"); if (s) root.dataset.theme = s; } catch (_) {}
+  const syncBtn = () => $("themeBtn").textContent = isDark() ? "Light mode" : "Dark mode";
+  $("themeBtn").addEventListener("click", () => {
+    root.dataset.theme = isDark() ? "light" : "dark";
+    try { localStorage.setItem("glossary-theme", root.dataset.theme); } catch (_) {}
+    syncBtn();
+  });
+  syncBtn();
+  render();
+})();
+</script>
+</body>
+</html>
