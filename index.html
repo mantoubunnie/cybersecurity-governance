@@ -24,9 +24,441 @@ const SITE_SUBTITLE = "Abbreviations, terms and phrases, updated every week";
 const TOTAL_WEEKS   = 12;
 
 const TERMS = [
+  { term: "AC", full: "Attack Complexity",
+    definition: "CVSS metric rating how hard it is to exploit a flaw, based on conditions the attacker cannot control (Low or High).",
+    week: 2 },
+
+  { term: "ACSC", full: "Australian Cyber Security Centre",
+    definition: "Australia's main government body for cyber security advice and incident response, part of the ASD. Publishes the yearly cyber threat report.",
+    week: 2 },
+
+  { term: "AI", full: "Artificial Intelligence",
+    definition: "Computer systems that perform tasks normally needing human thinking. Attackers now use it for realistic phishing messages and cloned voices.",
+    week: 2 },
+
+  { term: "ALE", full: "Annualised Loss Expectancy",
+    definition: "The loss you expect from a risk in one year, calculated as SLE multiplied by ARO. Helps compare the cost of a control with the loss it prevents.",
+    week: 2 },
+
+  { term: "API", full: "Application Programming Interface",
+    definition: "A set of rules that lets one software system request data from another. APIs that allow too much access are a common cause of breaches.",
+    week: 2 },
+
+  { term: "APP", full: "Australian Privacy Principles",
+    definition: "The 13 rules in Australia's Privacy Act 1988 for handling personal information. APP 1, APP 8 and APP 11 were relevant in the Qantas inquiry.",
+    week: 2 },
+
+  { term: "ARO", full: "Annualised Rate of Occurrence",
+    definition: "How many times a loss event is expected to happen per year. For example, 0.2 means about once every five years.",
+    week: 2 },
+
+  { term: "ASD", full: "Australian Signals Directorate",
+    definition: "Australian Government agency for signals intelligence and cyber security. It runs the ACSC and publishes the Essential Eight.",
+    week: 2 },
+
+  { term: "AT", full: "Attack Requirements",
+    definition: "CVSS v4.0 metric for whether special conditions on the target system are needed for an attack to work (None or Present).",
+    week: 2 },
+
+  { term: "ATT&CK", full: "Adversarial Tactics, Techniques, and Common Knowledge",
+    definition: "MITRE's public library of how real attackers operate. It gives more detail than the Cyber Kill Chain.",
+    week: 2 },
+
+  { term: "AUD", full: "Australian Dollar",
+    definition: "The currency used for the Qantas figures in the case study.",
+    week: 2 },
+
+  { term: "AV", full: "Attack Vector",
+    definition: "CVSS metric for how close an attacker must be to exploit a flaw: Network, Adjacent, Local or Physical. In loss formulas, AV can instead mean asset value.",
+    week: 2 },
+
+  { term: "BCP", full: "Business Continuity Plan",
+    definition: "A plan to keep the whole organisation running during a disruption, covering operations, suppliers, communication and staff. Wider in scope than a DRP.",
+    week: 2 },
+
+  { term: "C2", full: "Command and Control",
+    definition: "The kill chain stage where the attacker sets up a remote connection to control systems inside the victim's network.",
+    week: 2 },
+
+  { term: "CDO", full: "Chief Data Officer",
+    definition: "Senior executive responsible for how data is governed, kept accurate and used across the organisation.",
+    week: 2 },
+
+  { term: "CFO", full: "Chief Financial Officer",
+    definition: "Senior executive responsible for finance, including making sure transactions and balances are correct.",
+    week: 2 },
+
   { term: "CIA", full: "Confidentiality, Integrity, Availability",
-    definition: "The three core goals of information security: keep data away from the wrong people, keep it accurate and complete, and keep it accessible when needed.",
-    week: 1 },
+    definition: "The three main goals of information security, used to classify assets and judge the impact of an incident.",
+    week: 2 },
+
+  { term: "CISA", full: "Cybersecurity and Infrastructure Security Agency",
+    definition: "US government agency that runs the Known Exploited Vulnerabilities (KEV) catalog.",
+    week: 2 },
+
+  { term: "CISO", full: "Chief Information Security Officer",
+    definition: "Senior executive who leads the security program and reports cyber risk to the board.",
+    week: 2 },
+
+  { term: "CMDB", full: "Configuration Management Database",
+    definition: "A store of IT components such as servers and software and how they connect. A useful base for an asset inventory, but it usually lacks business classification.",
+    week: 2 },
+
+  { term: "CRM", full: "Customer Relationship Management",
+    definition: "A system holding customer details, contact history and service records. Qantas's cloud CRM was the system accessed in the 2025 incident.",
+    week: 2 },
+
+  { term: "CSF", full: "Cybersecurity Framework",
+    definition: "NIST's framework for managing cyber risk. Version 2.0 (2024) has six functions: Govern, Identify, Protect, Detect, Respond and Recover.",
+    week: 2 },
+
+  { term: "CVE", full: "Common Vulnerabilities and Exposures",
+    definition: "A system that gives each publicly known vulnerability a unique ID, such as CVE-2021-44228 (Log4Shell).",
+    week: 2 },
+
+  { term: "CVSS", full: "Common Vulnerability Scoring System",
+    definition: "A standard from FIRST that rates how severe a vulnerability is on a 0.0 to 10.0 scale. Versions 3.1 and 4.0 are in use. It rates severity, not business risk.",
+    week: 2 },
+
+  { term: "CWE", full: "Common Weakness Enumeration",
+    definition: "MITRE's list of the types of mistakes that cause vulnerabilities, such as CWE-89 for SQL injection.",
+    week: 2 },
+
+  { term: "DBIR", full: "Data Breach Investigations Report",
+    definition: "Verizon's yearly study of thousands of security incidents and breaches, grouped by attack pattern, asset and industry.",
+    week: 2 },
+
+  { term: "DBS", full: "DBS Bank Ltd (originally the Development Bank of Singapore)",
+    definition: "Singapore's largest bank, regulated by MAS. The course's DBS risk scenario is a made-up teaching case, not a list of the real bank's weaknesses.",
+    week: 2 },
+
+  { term: "DDoS", full: "Distributed Denial of Service",
+    definition: "A denial of service attack sent from many hijacked devices at once (a botnet) to flood a service.",
+    week: 2 },
+
+  { term: "DMARC", full: "Domain-based Message Authentication, Reporting and Conformance",
+    definition: "An email standard that helps stop attackers sending fake emails that appear to come from your domain.",
+    week: 2 },
+
+  { term: "DNS", full: "Domain Name System",
+    definition: "The internet's address book that turns names like qantas.com into IP addresses. DNS attacks disrupt or redirect these lookups.",
+    week: 2 },
+
+  { term: "DoS", full: "Denial of Service",
+    definition: "An attack that overloads a service so real users cannot reach it. It harms availability.",
+    week: 2 },
+
+  { term: "DPO", full: "Data Protection Officer",
+    definition: "The person who oversees compliance with data protection law. Required in some situations under the EU GDPR.",
+    week: 2 },
+
+  { term: "DR", full: "Disaster Recovery",
+    definition: "The processes and tools used to get IT systems working again after a major disruption.",
+    week: 2 },
+
+  { term: "DRP", full: "Disaster Recovery Plan",
+    definition: "A documented plan for restoring IT systems after a major disruption. It sits inside the wider BCP.",
+    week: 2 },
+
+  { term: "DSS", full: "Data Security Standard",
+    definition: "Part of PCI DSS, the required security standard for anyone who handles payment card data.",
+    week: 2 },
+
+  { term: "EDR", full: "Endpoint Detection and Response",
+    definition: "Security software on devices that watches for suspicious behaviour, can isolate an infected device and helps investigations.",
+    week: 2 },
+
+  { term: "EF", full: "Exposure Factor",
+    definition: "The share of an asset's value lost in one incident, used to calculate SLE.",
+    week: 2 },
+
+  { term: "ENISA", full: "European Union Agency for Cybersecurity",
+    definition: "The EU's cyber security agency. It publishes the yearly ENISA Threat Landscape report.",
+    week: 2 },
+
+  { term: "EO", full: "Executive Order",
+    definition: "An order issued by the US President. EO 13526 sets the Top Secret, Secret and Confidential classification levels.",
+    week: 2 },
+
+  { term: "EPSS", full: "Exploit Prediction Scoring System",
+    definition: "A FIRST model that estimates the chance a vulnerability will be exploited within the next 30 days.",
+    week: 2 },
+
+  { term: "ETL", full: "ENISA Threat Landscape",
+    definition: "ENISA's yearly report on cyber threats across the EU.",
+    week: 2 },
+
+  { term: "EU", full: "European Union",
+    definition: "A political and economic union of 27 European countries.",
+    week: 2 },
+
+  { term: "FAIR", full: "Factor Analysis of Information Risk",
+    definition: "A model for putting a money value on risk by combining how often loss events happen with how big the losses are.",
+    week: 2 },
+
+  { term: "FIPS", full: "Federal Information Processing Standards",
+    definition: "NIST standards for US government systems. FIPS 199 rates impact as Low, Moderate or High for C, I and A; FIPS 200 sets minimum security requirements.",
+    week: 2 },
+
+  { term: "FIRST", full: "Forum of Incident Response and Security Teams",
+    definition: "A global network of incident response teams. It maintains CVSS and EPSS.",
+    week: 2 },
+
+  { term: "FY", full: "Financial Year",
+    definition: "A 12-month accounting period. For Qantas, FY2026 ran from 1 July 2025 to 30 June 2026.",
+    week: 2 },
+
+  { term: "GDPR", full: "General Data Protection Regulation",
+    definition: "The EU's main data protection law, in force since 2018.",
+    week: 2 },
+
+  { term: "GTIG", full: "Google Threat Intelligence Group",
+    definition: "Google's threat research team. It reported on the UNC6040 phone phishing campaign against Salesforce customers in 2025.",
+    week: 2 },
+
+  { term: "HR", full: "Human Resources",
+    definition: "The team that manages staff, including joining, moving and leaving, which all trigger changes to system access.",
+    week: 2 },
+
+  { term: "IDS", full: "Intrusion Detection System",
+    definition: "A tool that watches network or device activity and raises alerts on suspicious behaviour. It alerts but does not block.",
+    week: 2 },
+
+  { term: "IEC", full: "International Electrotechnical Commission",
+    definition: "An international standards body that publishes the ISO/IEC 27000 series together with ISO.",
+    week: 2 },
+
+  { term: "IIA", full: "Institute of Internal Auditors",
+    definition: "The professional body for internal auditors. It publishes the Three Lines Model.",
+    week: 2 },
+
+  { term: "IoT", full: "Internet of Things",
+    definition: "Everyday devices connected to a network, such as cameras and sensors. They are often poorly secured.",
+    week: 2 },
+
+  { term: "IP", full: "Internet Protocol",
+    definition: "The system of addresses for devices on a network. IP restrictions only allow logins from approved address ranges.",
+    week: 2 },
+
+  { term: "IPS", full: "Intrusion Prevention System",
+    definition: "Similar to an IDS, but placed directly in the traffic path so it can block malicious activity automatically.",
+    week: 2 },
+
+  { term: "IRP", full: "Incident Response Plan",
+    definition: "A written plan setting out roles, escalation, communication and the steps to contain and recover from an incident.",
+    week: 2 },
+
+  { term: "ISF", full: "Information Security Forum",
+    definition: "An independent member organisation that publishes the Threat Horizon report on future threats.",
+    week: 2 },
+
+  { term: "ISO", full: "International Organization for Standardization (also: Information Security Officer)",
+    definition: "As a standards body, it publishes ISO 55000 and, with IEC, ISO/IEC 27001 and 27002. As a job role, the officer who sets classification rules and maintains asset inventories.",
+    week: 2 },
+
+  { term: "IT", full: "Information Technology",
+    definition: "Computers, networks and software, and the team that runs them.",
+    week: 2 },
+
+  { term: "ITS", full: "Information Technology Services",
+    definition: "The IT department, used as the example owner in the asset inventory template.",
+    week: 2 },
+
+  { term: "KEV", full: "Known Exploited Vulnerabilities",
+    definition: "CISA's list of vulnerabilities that attackers are known to be actively using. A strong signal to patch first.",
+    week: 2 },
+
+  { term: "KRI", full: "Key Risk Indicator",
+    definition: "A measure that warns when risk is rising, for example the number of admin accounts that have not been reviewed.",
+    week: 2 },
+
+  { term: "KYC", full: "Know Your Customer",
+    definition: "The identity checks banks must do when signing up new customers. It produces very sensitive identity data.",
+    week: 2 },
+
+  { term: "LMS", full: "Learning Management System",
+    definition: "A platform for delivering courses and storing students' work and grades.",
+    week: 2 },
+
+  { term: "MAS", full: "Monetary Authority of Singapore",
+    definition: "Singapore's central bank and financial regulator. It issues the Technology Risk Management Guidelines and Notice 644.",
+    week: 2 },
+
+  { term: "MFA", full: "Multi-Factor Authentication",
+    definition: "Logging in with two or more types of proof, such as a password plus a phone code. It does not help if a user is tricked into approving a malicious app.",
+    week: 2 },
+
+  { term: "MitM", full: "Man-in-the-Middle",
+    definition: "An attack where someone secretly sits between two parties to read or change their communication.",
+    week: 2 },
+
+  { term: "MITRE", full: "MITRE Corporation",
+    definition: "A US not-for-profit that runs the CVE Program, CWE and ATT&CK.",
+    week: 2 },
+
+  { term: "NDB", full: "Notifiable Data Breaches scheme",
+    definition: "An Australian rule requiring organisations to tell the OAIC and affected people about breaches likely to cause serious harm.",
+    week: 2 },
+
+  { term: "NIST", full: "National Institute of Standards and Technology",
+    definition: "A US agency that publishes FIPS, the SP 800 series and the Cybersecurity Framework.",
+    week: 2 },
+
+  { term: "NSW", full: "New South Wales",
+    definition: "An Australian state. Qantas got a court order from the NSW Supreme Court in July 2025 to stop use of the stolen data.",
+    week: 2 },
+
+  { term: "NVD", full: "National Vulnerability Database",
+    definition: "NIST's database that adds detail to CVE records, including severity scores, weakness types and affected products.",
+    week: 2 },
+
+  { term: "OAIC", full: "Office of the Australian Information Commissioner",
+    definition: "Australia's privacy regulator. It closed its preliminary inquiries into the Qantas incident in July 2026 without taking further action at that point.",
+    week: 2 },
+
+  { term: "OAuth", full: "Open Authorization",
+    definition: "A standard that lets users give an app limited access to their account without sharing their password. Attackers abused it in the Qantas-style attacks through fake connected apps.",
+    week: 2 },
+
+  { term: "OWASP", full: "Open Worldwide Application Security Project",
+    definition: "A non-profit best known for its Top 10 lists of web application and API security risks.",
+    week: 2 },
+
+  { term: "PCI", full: "Payment Card Industry",
+    definition: "The card payments industry. Its security standard is PCI DSS.",
+    week: 2 },
+
+  { term: "PDPA", full: "Personal Data Protection Act 2012 (Singapore)",
+    definition: "Singapore's data protection law, relevant to the DBS scenario.",
+    week: 2 },
+
+  { term: "PII", full: "Personally Identifiable Information",
+    definition: "Data that can identify a person, such as their name, date of birth or address.",
+    week: 2 },
+
+  { term: "POS", full: "Point of Sale",
+    definition: "Checkout terminals and software that take card payments.",
+    week: 2 },
+
+  { term: "PR", full: "Privileges Required",
+    definition: "CVSS metric for how much access an attacker needs before exploiting a flaw (None, Low or High).",
+    week: 2 },
+
+  { term: "PSPF", full: "Protective Security Policy Framework",
+    definition: "Australian Government security policy that defines classifications such as OFFICIAL: Sensitive, PROTECTED, SECRET and TOP SECRET.",
+    week: 2 },
+
+  { term: "PV", full: "Present Value",
+    definition: "What a future amount of money is worth today after applying a discount rate.",
+    week: 2 },
+
+  { term: "RACI", full: "Responsible, Accountable, Consulted, Informed",
+    definition: "A table showing who does each task, who owns it, who gives input and who is kept updated.",
+    week: 2 },
+
+  { term: "RFC", full: "Request for Comments",
+    definition: "The documents that define internet standards, such as RFC 6749 for OAuth 2.0.",
+    week: 2 },
+
+  { term: "RTO", full: "Recovery Time Objective",
+    definition: "The longest acceptable time to get a system working again after a disruption. MAS expects 4 hours or less for banks' critical systems.",
+    week: 2 },
+
+  { term: "SA", full: "Subsequent System Availability",
+    definition: "CVSS v4.0 metric for the availability impact on other systems beyond the vulnerable one.",
+    week: 2 },
+
+  { term: "SaaS", full: "Software as a Service",
+    definition: "Software run by a provider and used over the internet, such as a cloud CRM.",
+    week: 2 },
+
+  { term: "SC", full: "Security Category (FIPS 199)",
+    definition: "The FIPS 199 way of writing the impact level for confidentiality, integrity and availability. In CVSS v4.0, SC also means Subsequent System Confidentiality.",
+    week: 2 },
+
+  { term: "SI", full: "Subsequent System Integrity",
+    definition: "CVSS v4.0 metric for the integrity impact on other systems beyond the vulnerable one.",
+    week: 2 },
+
+  { term: "SIEM", full: "Security Information and Event Management",
+    definition: "A platform that gathers logs from many systems, links related events and raises alerts.",
+    week: 2 },
+
+  { term: "SIM", full: "Subscriber Identity Module",
+    definition: "The card that links a phone number to a device. In SIM-swap fraud, attackers take over a victim's number to receive their login codes.",
+    week: 2 },
+
+  { term: "SLE", full: "Single Loss Expectancy",
+    definition: "The loss from one occurrence of a risk event, calculated as asset value multiplied by exposure factor.",
+    week: 2 },
+
+  { term: "SMB", full: "Server Message Block",
+    definition: "A Windows file sharing protocol. The EternalBlue exploit targeted SMBv1.",
+    week: 2 },
+
+  { term: "SOC", full: "Security Operations Centre",
+    definition: "The team that monitors, detects and responds to security events, usually around the clock.",
+    week: 2 },
+
+  { term: "SP", full: "Special Publication",
+    definition: "A NIST document series, such as SP 800-30 on risk assessment, SP 800-53 on controls and SP 800-61 on incident response.",
+    week: 2 },
+
+  { term: "SQL", full: "Structured Query Language",
+    definition: "The language used to query databases. SQL injection sneaks harmful SQL commands in through unchecked input.",
+    week: 2 },
+
+  { term: "STRIDE", full: "Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege",
+    definition: "A Microsoft threat modelling checklist. Each letter is a threat type that breaks one security property.",
+    week: 2 },
+
+  { term: "TLS", full: "Transport Layer Security",
+    definition: "The protocol that encrypts data while it travels across a network, as used in HTTPS.",
+    week: 2 },
+
+  { term: "TRM", full: "Technology Risk Management",
+    definition: "As in the MAS TRM Guidelines (2021), which set out what MAS expects from financial institutions on technology risk, resilience and cyber security.",
+    week: 2 },
+
+  { term: "UI", full: "User Interaction",
+    definition: "CVSS metric for whether someone other than the attacker has to do something for the attack to work.",
+    week: 2 },
+
+  { term: "UNC", full: "Uncategorised threat group",
+    definition: "A Google/Mandiant label for attack activity not yet linked to a known group, such as UNC6040 and UNC6240.",
+    week: 2 },
+
+  { term: "USB", full: "Universal Serial Bus",
+    definition: "The standard for removable drives and accessories. A common route for data leaks and malware.",
+    week: 2 },
+
+  { term: "USD", full: "United States Dollar",
+    definition: "The currency used in IBM's Cost of a Data Breach figures.",
+    week: 2 },
+
+  { term: "VA", full: "Vulnerable System Availability",
+    definition: "CVSS v4.0 metric for the availability impact on the vulnerable system itself.",
+    week: 2 },
+
+  { term: "VC", full: "Vulnerable System Confidentiality",
+    definition: "CVSS v4.0 metric for the confidentiality impact on the vulnerable system itself.",
+    week: 2 },
+
+  { term: "VI", full: "Vulnerable System Integrity",
+    definition: "CVSS v4.0 metric for the integrity impact on the vulnerable system itself.",
+    week: 2 },
+
+  { term: "VPN", full: "Virtual Private Network",
+    definition: "An encrypted connection over the internet. Attackers also use commercial VPNs to hide where they are.",
+    week: 2 },
+
+  { term: "XP", full: "Experience Points",
+    definition: "Points earned in the course website for completing activities.",
+    week: 2 },
+
+  { term: "XSS", full: "Cross-Site Scripting",
+    definition: "A web attack that plants harmful scripts in pages that other users then load.",
+    week: 2 },
 
   { term: "Asset", full: "",
     definition: "Anything of value an organisation needs to reach its goals, including data, software, hardware, people and reputation.",
@@ -36,52 +468,20 @@ const TERMS = [
     definition: "A register listing every valuable asset, where it lives, who owns it and how it is protected. Also called an asset register.",
     week: 2 },
 
-  { term: "CMDB", full: "Configuration Management Database",
-    definition: "A tool that records IT components and how they connect. A useful starting point for an asset inventory, but it rarely captures business ownership or classification.",
+  { term: "Attack vector", full: "",
+    definition: "The route or method an attacker uses to get in, such as a phishing email, a stolen password or a vulnerable app.",
     week: 2 },
 
-  { term: "FIPS 199", full: "Federal Information Processing Standard 199",
-    definition: "A US standard that rates the potential impact (Low, Moderate or High) of losing the confidentiality, integrity or availability of a system.",
+  { term: "Defence in depth", full: "",
+    definition: "Layering several independent controls so that if one fails, the others still protect the asset.",
     week: 2 },
 
   { term: "Threat agent", full: "",
     definition: "The person or thing that triggers a threat, either deliberately (a criminal) or by accident (a staff mistake).",
     week: 2 },
 
-  { term: "Attack vector", full: "",
-    definition: "The route or method an attacker uses to get in, such as a phishing email, a stolen password or a vulnerable app.",
-    week: 2 },
-
   { term: "Vishing", full: "Voice phishing",
     definition: "Social engineering carried out over the phone, often by pretending to be IT support or a bank.",
-    week: 2 },
-
-  { term: "STRIDE", full: "Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege",
-    definition: "A threat modelling checklist from Microsoft. Each letter is a type of threat that breaks one security property.",
-    week: 2 },
-
-  { term: "CVE", full: "Common Vulnerabilities and Exposures",
-    definition: "A unique public ID for a known vulnerability, for example CVE-2021-44228 (Log4Shell).",
-    week: 2 },
-
-  { term: "CVSS", full: "Common Vulnerability Scoring System",
-    definition: "A score from 0.0 to 10.0 describing how technically severe a vulnerability is. It measures severity, not business risk.",
-    week: 2 },
-
-  { term: "KEV", full: "Known Exploited Vulnerabilities",
-    definition: "A catalogue run by US CISA listing vulnerabilities that attackers are actively exploiting, which makes them a top priority to patch.",
-    week: 2 },
-
-  { term: "ALE", full: "Annualised Loss Expectancy",
-    definition: "The expected yearly loss from a risk: the single loss expectancy multiplied by how many times a year the event is expected to happen.",
-    week: 2 },
-
-  { term: "MFA", full: "Multi-Factor Authentication",
-    definition: "Logging in with two or more kinds of proof, such as a password plus a code on your phone.",
-    week: 2 },
-
-  { term: "Defence in depth", full: "",
-    definition: "Layering several independent controls so that if one fails, the others still protect the asset.",
     week: 2 },
 
   /* TEMPLATE: copy the 3 lines below, paste them above this comment, fill them in
