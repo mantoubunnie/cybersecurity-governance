@@ -1,1 +1,1 @@
-# sylvias-cybersecurity-governance-glossary
+# cybersecurity-governance
