@@ -5,488 +5,838 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Course Glossary</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap&subset=vietnamese" rel="stylesheet">
 <script>
 /* ==========================================================================
    EDIT YOUR GLOSSARY HERE
    --------------------------------------------------------------------------
-   To add a term, copy the template at the bottom of the list, paste it
+   To add a term, copy the TEMPLATE at the bottom of the list, paste it
    above the template, and fill it in.
      term        : the word, phrase or abbreviation (required)
-     full        : the full form if it is an abbreviation, otherwise ""
-     definition  : a plain-language explanation (required)
+     full        : what it stands for, if it is an abbreviation, otherwise ""
+     vi          : the Vietnamese translation, or ""
+     definition  : the English definition (required)
+     example     : an example, or "" if you don't have one
      week        : a number from 1 to 12
    The page sorts terms A to Z by itself.
    Keep the comma after each closing curly bracket.
    ========================================================================== */
-const SITE_TITLE    = "sylvia's awesome cybersecurity glossary";
-const SITE_SUBTITLE = "welcome to the ultimate cybersecurity governance glossary documented by sylvia (♡ˊ͈ ꒳ ˋ͈) ";
+const SITE_TITLE    = "Cybersecurity Governance Glossary";
+const SITE_SUBTITLE = "helou (♡ˊ͈ ꒳ ˋ͈) welcome to the ultimate glossary of sylvia";
 const TOTAL_WEEKS   = 12;
 
 const TERMS = [
-  { term: "AC", full: "Attack Complexity",
+  { term: "AC",
+    full: "Attack Complexity",
+    vi: "Độ phức tạp của tấn công",
     definition: "CVSS metric rating how hard it is to exploit a flaw, based on conditions the attacker cannot control (Low or High).",
+    example: "",
     week: 2 },
 
-  { term: "ACSC", full: "Australian Cyber Security Centre",
+  { term: "ACSC",
+    full: "Australian Cyber Security Centre",
+    vi: "Trung tâm An ninh mạng Úc",
     definition: "Australia's main government body for cyber security advice and incident response, part of the ASD. Publishes the yearly cyber threat report.",
+    example: "",
     week: 2 },
 
-  { term: "AI", full: "Artificial Intelligence",
+  { term: "AI",
+    full: "Artificial Intelligence",
+    vi: "Trí tuệ nhân tạo",
     definition: "Computer systems that perform tasks normally needing human thinking. Attackers now use it for realistic phishing messages and cloned voices.",
+    example: "",
     week: 2 },
 
-  { term: "ALE", full: "Annualised Loss Expectancy",
+  { term: "ALE",
+    full: "Annualised Loss Expectancy",
+    vi: "Tổn thất dự kiến hằng năm",
     definition: "The loss you expect from a risk in one year, calculated as SLE multiplied by ARO. Helps compare the cost of a control with the loss it prevents.",
+    example: "An asset worth $100,000 loses 40% in one incident (SLE = $40,000). If that happens once every 5 years (ARO = 0.2), the ALE is $8,000 per year.",
     week: 2 },
 
-  { term: "API", full: "Application Programming Interface",
+  { term: "API",
+    full: "Application Programming Interface",
+    vi: "Giao diện lập trình ứng dụng",
     definition: "A set of rules that lets one software system request data from another. APIs that allow too much access are a common cause of breaches.",
+    example: "A supplier's app calls a bank's onboarding API to fetch a new customer's ID details.",
     week: 2 },
 
-  { term: "APP", full: "Australian Privacy Principles",
+  { term: "APP",
+    full: "Australian Privacy Principles",
+    vi: "Các Nguyên tắc Quyền riêng tư của Úc",
     definition: "The 13 rules in Australia's Privacy Act 1988 for handling personal information. APP 1, APP 8 and APP 11 were relevant in the Qantas inquiry.",
+    example: "",
     week: 2 },
 
-  { term: "ARO", full: "Annualised Rate of Occurrence",
+  { term: "ARO",
+    full: "Annualised Rate of Occurrence",
+    vi: "Tần suất xảy ra hằng năm",
     definition: "How many times a loss event is expected to happen per year. For example, 0.2 means about once every five years.",
+    example: "A flood expected once every 10 years has an ARO of 0.1.",
     week: 2 },
 
-  { term: "ASD", full: "Australian Signals Directorate",
+  { term: "ASD",
+    full: "Australian Signals Directorate",
+    vi: "Cục Tình báo Tín hiệu Úc",
     definition: "Australian Government agency for signals intelligence and cyber security. It runs the ACSC and publishes the Essential Eight.",
+    example: "",
     week: 2 },
 
-  { term: "AT", full: "Attack Requirements",
+  { term: "AT",
+    full: "Attack Requirements",
+    vi: "Yêu cầu (điều kiện) tấn công",
     definition: "CVSS v4.0 metric for whether special conditions on the target system are needed for an attack to work (None or Present).",
+    example: "",
     week: 2 },
 
-  { term: "ATT&CK", full: "Adversarial Tactics, Techniques, and Common Knowledge",
+  { term: "ATT&CK",
+    full: "Adversarial Tactics, Techniques, and Common Knowledge",
+    vi: "Chiến thuật, kỹ thuật và kiến thức phổ biến của kẻ tấn công",
     definition: "MITRE's public library of how real attackers operate. It gives more detail than the Cyber Kill Chain.",
+    example: "",
     week: 2 },
 
-  { term: "AUD", full: "Australian Dollar",
+  { term: "AUD",
+    full: "Australian Dollar",
+    vi: "Đô la Úc",
     definition: "The currency used for the Qantas figures in the case study.",
+    example: "",
     week: 2 },
 
-  { term: "AV", full: "Attack Vector",
+  { term: "AV",
+    full: "Attack Vector",
+    vi: "Vectơ tấn công",
     definition: "CVSS metric for how close an attacker must be to exploit a flaw: Network, Adjacent, Local or Physical. In loss formulas, AV can instead mean asset value.",
+    example: "A flaw that can be exploited from anywhere on the internet is rated AV: Network.",
     week: 2 },
 
-  { term: "BCP", full: "Business Continuity Plan",
+  { term: "BCP",
+    full: "Business Continuity Plan",
+    vi: "Kế hoạch duy trì hoạt động kinh doanh liên tục",
     definition: "A plan to keep the whole organisation running during a disruption, covering operations, suppliers, communication and staff. Wider in scope than a DRP.",
+    example: "Airport staff switch to manual check-in while the booking system is down.",
     week: 2 },
 
-  { term: "C2", full: "Command and Control",
+  { term: "C2",
+    full: "Command and Control",
+    vi: "Chỉ huy và điều khiển",
     definition: "The kill chain stage where the attacker sets up a remote connection to control systems inside the victim's network.",
+    example: "",
     week: 2 },
 
-  { term: "CDO", full: "Chief Data Officer",
+  { term: "CDO",
+    full: "Chief Data Officer",
+    vi: "Giám đốc dữ liệu",
     definition: "Senior executive responsible for how data is governed, kept accurate and used across the organisation.",
+    example: "",
     week: 2 },
 
-  { term: "CFO", full: "Chief Financial Officer",
+  { term: "CFO",
+    full: "Chief Financial Officer",
+    vi: "Giám đốc tài chính",
     definition: "Senior executive responsible for finance, including making sure transactions and balances are correct.",
+    example: "",
     week: 2 },
 
-  { term: "CIA", full: "Confidentiality, Integrity, Availability",
+  { term: "CIA",
+    full: "Confidentiality, Integrity, Availability",
+    vi: "Tính bảo mật, tính toàn vẹn, tính sẵn sàng",
     definition: "The three main goals of information security, used to classify assets and judge the impact of an incident.",
+    example: "Leaked customer records hurt confidentiality, a changed bank balance hurts integrity, and a website outage hurts availability.",
     week: 2 },
 
-  { term: "CISA", full: "Cybersecurity and Infrastructure Security Agency",
+  { term: "CISA",
+    full: "Cybersecurity and Infrastructure Security Agency",
+    vi: "Cơ quan An ninh mạng và An ninh Cơ sở hạ tầng (Hoa Kỳ)",
     definition: "US government agency that runs the Known Exploited Vulnerabilities (KEV) catalog.",
+    example: "",
     week: 2 },
 
-  { term: "CISO", full: "Chief Information Security Officer",
+  { term: "CISO",
+    full: "Chief Information Security Officer",
+    vi: "Giám đốc an ninh thông tin",
     definition: "Senior executive who leads the security program and reports cyber risk to the board.",
+    example: "",
     week: 2 },
 
-  { term: "CMDB", full: "Configuration Management Database",
+  { term: "CMDB",
+    full: "Configuration Management Database",
+    vi: "Cơ sở dữ liệu quản lý cấu hình",
     definition: "A store of IT components such as servers and software and how they connect. A useful base for an asset inventory, but it usually lacks business classification.",
+    example: "",
     week: 2 },
 
-  { term: "CRM", full: "Customer Relationship Management",
+  { term: "CRM",
+    full: "Customer Relationship Management",
+    vi: "Quản lý quan hệ khách hàng",
     definition: "A system holding customer details, contact history and service records. Qantas's cloud CRM was the system accessed in the 2025 incident.",
+    example: "The Salesforce platform used by Qantas's contact centre.",
     week: 2 },
 
-  { term: "CSF", full: "Cybersecurity Framework",
+  { term: "CSF",
+    full: "Cybersecurity Framework",
+    vi: "Khung an ninh mạng",
     definition: "NIST's framework for managing cyber risk. Version 2.0 (2024) has six functions: Govern, Identify, Protect, Detect, Respond and Recover.",
+    example: "",
     week: 2 },
 
-  { term: "CVE", full: "Common Vulnerabilities and Exposures",
+  { term: "CVE",
+    full: "Common Vulnerabilities and Exposures",
+    vi: "Danh mục lỗ hổng và điểm phơi nhiễm phổ biến",
     definition: "A system that gives each publicly known vulnerability a unique ID, such as CVE-2021-44228 (Log4Shell).",
+    example: "CVE-2021-44228 is the ID for the Log4Shell flaw in the Log4j library.",
     week: 2 },
 
-  { term: "CVSS", full: "Common Vulnerability Scoring System",
+  { term: "CVSS",
+    full: "Common Vulnerability Scoring System",
+    vi: "Hệ thống chấm điểm lỗ hổng phổ biến",
     definition: "A standard from FIRST that rates how severe a vulnerability is on a 0.0 to 10.0 scale. Versions 3.1 and 4.0 are in use. It rates severity, not business risk.",
+    example: "Log4Shell received a CVSS score of 10.0, rated Critical.",
     week: 2 },
 
-  { term: "CWE", full: "Common Weakness Enumeration",
+  { term: "CWE",
+    full: "Common Weakness Enumeration",
+    vi: "Danh mục điểm yếu phổ biến",
     definition: "MITRE's list of the types of mistakes that cause vulnerabilities, such as CWE-89 for SQL injection.",
+    example: "CWE-89 is the weakness type for SQL injection.",
     week: 2 },
 
-  { term: "DBIR", full: "Data Breach Investigations Report",
+  { term: "DBIR",
+    full: "Data Breach Investigations Report",
+    vi: "Báo cáo điều tra vi phạm dữ liệu",
     definition: "Verizon's yearly study of thousands of security incidents and breaches, grouped by attack pattern, asset and industry.",
+    example: "",
     week: 2 },
 
-  { term: "DBS", full: "DBS Bank Ltd (originally the Development Bank of Singapore)",
+  { term: "DBS",
+    full: "DBS Bank Ltd (originally the Development Bank of Singapore)",
+    vi: "Ngân hàng DBS (tiền thân là Ngân hàng Phát triển Singapore)",
     definition: "Singapore's largest bank, regulated by MAS. The course's DBS risk scenario is a made-up teaching case, not a list of the real bank's weaknesses.",
+    example: "",
     week: 2 },
 
-  { term: "DDoS", full: "Distributed Denial of Service",
+  { term: "DDoS",
+    full: "Distributed Denial of Service",
+    vi: "Tấn công từ chối dịch vụ phân tán",
     definition: "A denial of service attack sent from many hijacked devices at once (a botnet) to flood a service.",
+    example: "Thousands of hacked home cameras flood an online shop with traffic so real customers cannot check out.",
     week: 2 },
 
-  { term: "DMARC", full: "Domain-based Message Authentication, Reporting and Conformance",
+  { term: "DMARC",
+    full: "Domain-based Message Authentication, Reporting and Conformance",
+    vi: "Xác thực, báo cáo và tuân thủ thư điện tử dựa trên tên miền",
     definition: "An email standard that helps stop attackers sending fake emails that appear to come from your domain.",
+    example: "A DMARC policy tells Gmail to reject emails pretending to come from yourbank.com.",
     week: 2 },
 
-  { term: "DNS", full: "Domain Name System",
+  { term: "DNS",
+    full: "Domain Name System",
+    vi: "Hệ thống phân giải tên miền",
     definition: "The internet's address book that turns names like qantas.com into IP addresses. DNS attacks disrupt or redirect these lookups.",
+    example: "",
     week: 2 },
 
-  { term: "DoS", full: "Denial of Service",
+  { term: "DoS",
+    full: "Denial of Service",
+    vi: "Tấn công từ chối dịch vụ",
     definition: "An attack that overloads a service so real users cannot reach it. It harms availability.",
+    example: "An attacker sends so many requests to a login page that it stops responding.",
     week: 2 },
 
-  { term: "DPO", full: "Data Protection Officer",
+  { term: "DPO",
+    full: "Data Protection Officer",
+    vi: "Cán bộ bảo vệ dữ liệu",
     definition: "The person who oversees compliance with data protection law. Required in some situations under the EU GDPR.",
+    example: "",
     week: 2 },
 
-  { term: "DR", full: "Disaster Recovery",
+  { term: "DR",
+    full: "Disaster Recovery",
+    vi: "Khôi phục sau thảm họa",
     definition: "The processes and tools used to get IT systems working again after a major disruption.",
+    example: "",
     week: 2 },
 
-  { term: "DRP", full: "Disaster Recovery Plan",
+  { term: "DRP",
+    full: "Disaster Recovery Plan",
+    vi: "Kế hoạch khôi phục sau thảm họa",
     definition: "A documented plan for restoring IT systems after a major disruption. It sits inside the wider BCP.",
+    example: "Restoring servers from backup at a second data centre after the main one fails.",
     week: 2 },
 
-  { term: "DSS", full: "Data Security Standard",
+  { term: "DSS",
+    full: "Data Security Standard",
+    vi: "Tiêu chuẩn bảo mật dữ liệu",
     definition: "Part of PCI DSS, the required security standard for anyone who handles payment card data.",
+    example: "",
     week: 2 },
 
-  { term: "EDR", full: "Endpoint Detection and Response",
+  { term: "EDR",
+    full: "Endpoint Detection and Response",
+    vi: "Phát hiện và phản hồi tại thiết bị đầu cuối",
     definition: "Security software on devices that watches for suspicious behaviour, can isolate an infected device and helps investigations.",
+    example: "EDR software isolates a laptop from the network after it starts encrypting files.",
     week: 2 },
 
-  { term: "EF", full: "Exposure Factor",
+  { term: "EF",
+    full: "Exposure Factor",
+    vi: "Hệ số phơi nhiễm (tỷ lệ tổn thất)",
     definition: "The share of an asset's value lost in one incident, used to calculate SLE.",
+    example: "If a fire destroys a quarter of a data centre's value, the exposure factor is 25%.",
     week: 2 },
 
-  { term: "ENISA", full: "European Union Agency for Cybersecurity",
+  { term: "ENISA",
+    full: "European Union Agency for Cybersecurity",
+    vi: "Cơ quan An ninh mạng Liên minh châu Âu",
     definition: "The EU's cyber security agency. It publishes the yearly ENISA Threat Landscape report.",
+    example: "",
     week: 2 },
 
-  { term: "EO", full: "Executive Order",
+  { term: "EO",
+    full: "Executive Order",
+    vi: "Sắc lệnh hành pháp",
     definition: "An order issued by the US President. EO 13526 sets the Top Secret, Secret and Confidential classification levels.",
+    example: "",
     week: 2 },
 
-  { term: "EPSS", full: "Exploit Prediction Scoring System",
+  { term: "EPSS",
+    full: "Exploit Prediction Scoring System",
+    vi: "Hệ thống chấm điểm dự đoán khả năng bị khai thác",
     definition: "A FIRST model that estimates the chance a vulnerability will be exploited within the next 30 days.",
+    example: "",
     week: 2 },
 
-  { term: "ETL", full: "ENISA Threat Landscape",
+  { term: "ETL",
+    full: "ENISA Threat Landscape",
+    vi: "Báo cáo toàn cảnh mối đe dọa của ENISA",
     definition: "ENISA's yearly report on cyber threats across the EU.",
+    example: "",
     week: 2 },
 
-  { term: "EU", full: "European Union",
+  { term: "EU",
+    full: "European Union",
+    vi: "Liên minh châu Âu",
     definition: "A political and economic union of 27 European countries.",
+    example: "",
     week: 2 },
 
-  { term: "FAIR", full: "Factor Analysis of Information Risk",
+  { term: "FAIR",
+    full: "Factor Analysis of Information Risk",
+    vi: "Phân tích nhân tố rủi ro thông tin",
     definition: "A model for putting a money value on risk by combining how often loss events happen with how big the losses are.",
+    example: "",
     week: 2 },
 
-  { term: "FIPS", full: "Federal Information Processing Standards",
+  { term: "FIPS",
+    full: "Federal Information Processing Standards",
+    vi: "Tiêu chuẩn xử lý thông tin liên bang (Hoa Kỳ)",
     definition: "NIST standards for US government systems. FIPS 199 rates impact as Low, Moderate or High for C, I and A; FIPS 200 sets minimum security requirements.",
+    example: "SC = {(confidentiality, High), (integrity, Moderate), (availability, Low)} gives an overall impact of High.",
     week: 2 },
 
-  { term: "FIRST", full: "Forum of Incident Response and Security Teams",
+  { term: "FIRST",
+    full: "Forum of Incident Response and Security Teams",
+    vi: "Diễn đàn các nhóm ứng cứu sự cố và an ninh",
     definition: "A global network of incident response teams. It maintains CVSS and EPSS.",
+    example: "",
     week: 2 },
 
-  { term: "FY", full: "Financial Year",
+  { term: "FY",
+    full: "Financial Year",
+    vi: "Năm tài chính",
     definition: "A 12-month accounting period. For Qantas, FY2026 ran from 1 July 2025 to 30 June 2026.",
+    example: "",
     week: 2 },
 
-  { term: "GDPR", full: "General Data Protection Regulation",
+  { term: "GDPR",
+    full: "General Data Protection Regulation",
+    vi: "Quy định chung về bảo vệ dữ liệu (EU)",
     definition: "The EU's main data protection law, in force since 2018.",
+    example: "",
     week: 2 },
 
-  { term: "GTIG", full: "Google Threat Intelligence Group",
+  { term: "GTIG",
+    full: "Google Threat Intelligence Group",
+    vi: "Nhóm Tình báo Mối đe dọa của Google",
     definition: "Google's threat research team. It reported on the UNC6040 phone phishing campaign against Salesforce customers in 2025.",
+    example: "",
     week: 2 },
 
-  { term: "HR", full: "Human Resources",
+  { term: "HR",
+    full: "Human Resources",
+    vi: "Nhân sự",
     definition: "The team that manages staff, including joining, moving and leaving, which all trigger changes to system access.",
+    example: "",
     week: 2 },
 
-  { term: "IDS", full: "Intrusion Detection System",
+  { term: "IDS",
+    full: "Intrusion Detection System",
+    vi: "Hệ thống phát hiện xâm nhập",
     definition: "A tool that watches network or device activity and raises alerts on suspicious behaviour. It alerts but does not block.",
+    example: "An IDS alerts the security team when someone scans the network for open ports.",
     week: 2 },
 
-  { term: "IEC", full: "International Electrotechnical Commission",
+  { term: "IEC",
+    full: "International Electrotechnical Commission",
+    vi: "Ủy ban Kỹ thuật Điện Quốc tế",
     definition: "An international standards body that publishes the ISO/IEC 27000 series together with ISO.",
+    example: "",
     week: 2 },
 
-  { term: "IIA", full: "Institute of Internal Auditors",
+  { term: "IIA",
+    full: "Institute of Internal Auditors",
+    vi: "Viện Kiểm toán viên Nội bộ",
     definition: "The professional body for internal auditors. It publishes the Three Lines Model.",
+    example: "",
     week: 2 },
 
-  { term: "IoT", full: "Internet of Things",
+  { term: "IoT",
+    full: "Internet of Things",
+    vi: "Internet vạn vật",
     definition: "Everyday devices connected to a network, such as cameras and sensors. They are often poorly secured.",
+    example: "Smart cameras, smart TVs and connected door locks.",
     week: 2 },
 
-  { term: "IP", full: "Internet Protocol",
+  { term: "IP",
+    full: "Internet Protocol",
+    vi: "Giao thức Internet",
     definition: "The system of addresses for devices on a network. IP restrictions only allow logins from approved address ranges.",
+    example: "",
     week: 2 },
 
-  { term: "IPS", full: "Intrusion Prevention System",
+  { term: "IPS",
+    full: "Intrusion Prevention System",
+    vi: "Hệ thống ngăn chặn xâm nhập",
     definition: "Similar to an IDS, but placed directly in the traffic path so it can block malicious activity automatically.",
+    example: "An IPS automatically blocks traffic from an address sending exploit attempts.",
     week: 2 },
 
-  { term: "IRP", full: "Incident Response Plan",
+  { term: "IRP",
+    full: "Incident Response Plan",
+    vi: "Kế hoạch ứng phó sự cố",
     definition: "A written plan setting out roles, escalation, communication and the steps to contain and recover from an incident.",
+    example: "",
     week: 2 },
 
-  { term: "ISF", full: "Information Security Forum",
+  { term: "ISF",
+    full: "Information Security Forum",
+    vi: "Diễn đàn An ninh Thông tin",
     definition: "An independent member organisation that publishes the Threat Horizon report on future threats.",
+    example: "",
     week: 2 },
 
-  { term: "ISO", full: "International Organization for Standardization (also: Information Security Officer)",
+  { term: "ISO",
+    full: "International Organization for Standardization (also: Information Security Officer)",
+    vi: "Tổ chức Tiêu chuẩn hóa Quốc tế (hoặc: Cán bộ an ninh thông tin)",
     definition: "As a standards body, it publishes ISO 55000 and, with IEC, ISO/IEC 27001 and 27002. As a job role, the officer who sets classification rules and maintains asset inventories.",
+    example: "",
     week: 2 },
 
-  { term: "IT", full: "Information Technology",
+  { term: "IT",
+    full: "Information Technology",
+    vi: "Công nghệ thông tin",
     definition: "Computers, networks and software, and the team that runs them.",
+    example: "",
     week: 2 },
 
-  { term: "ITS", full: "Information Technology Services",
+  { term: "ITS",
+    full: "Information Technology Services",
+    vi: "Dịch vụ công nghệ thông tin",
     definition: "The IT department, used as the example owner in the asset inventory template.",
+    example: "",
     week: 2 },
 
-  { term: "KEV", full: "Known Exploited Vulnerabilities",
+  { term: "KEV",
+    full: "Known Exploited Vulnerabilities",
+    vi: "Danh mục lỗ hổng đã bị khai thác trong thực tế",
     definition: "CISA's list of vulnerabilities that attackers are known to be actively using. A strong signal to patch first.",
+    example: "When a flaw appears on the KEV list, teams should patch it before higher-scored flaws that nobody is exploiting yet.",
     week: 2 },
 
-  { term: "KRI", full: "Key Risk Indicator",
+  { term: "KRI",
+    full: "Key Risk Indicator",
+    vi: "Chỉ số rủi ro chính",
     definition: "A measure that warns when risk is rising, for example the number of admin accounts that have not been reviewed.",
+    example: "Number of privileged accounts not reviewed in the last 90 days, with a target of 0.",
     week: 2 },
 
-  { term: "KYC", full: "Know Your Customer",
+  { term: "KYC",
+    full: "Know Your Customer",
+    vi: "Định danh khách hàng",
     definition: "The identity checks banks must do when signing up new customers. It produces very sensitive identity data.",
+    example: "Uploading a photo of your ID card and a selfie when opening a bank account online.",
     week: 2 },
 
-  { term: "LMS", full: "Learning Management System",
+  { term: "LMS",
+    full: "Learning Management System",
+    vi: "Hệ thống quản lý học tập",
     definition: "A platform for delivering courses and storing students' work and grades.",
+    example: "",
     week: 2 },
 
-  { term: "MAS", full: "Monetary Authority of Singapore",
+  { term: "MAS",
+    full: "Monetary Authority of Singapore",
+    vi: "Cơ quan Tiền tệ Singapore",
     definition: "Singapore's central bank and financial regulator. It issues the Technology Risk Management Guidelines and Notice 644.",
+    example: "",
     week: 2 },
 
-  { term: "MFA", full: "Multi-Factor Authentication",
+  { term: "MFA",
+    full: "Multi-Factor Authentication",
+    vi: "Xác thực đa yếu tố",
     definition: "Logging in with two or more types of proof, such as a password plus a phone code. It does not help if a user is tricked into approving a malicious app.",
+    example: "Typing your password, then approving a prompt in an authenticator app on your phone.",
     week: 2 },
 
-  { term: "MitM", full: "Man-in-the-Middle",
+  { term: "MitM",
+    full: "Man-in-the-Middle",
+    vi: "Tấn công xen giữa (người đứng giữa)",
     definition: "An attack where someone secretly sits between two parties to read or change their communication.",
+    example: "An attacker running fake café Wi-Fi reads the traffic between a user and a website.",
     week: 2 },
 
-  { term: "MITRE", full: "MITRE Corporation",
+  { term: "MITRE",
+    full: "MITRE Corporation",
+    vi: "Tập đoàn MITRE",
     definition: "A US not-for-profit that runs the CVE Program, CWE and ATT&CK.",
+    example: "",
     week: 2 },
 
-  { term: "NDB", full: "Notifiable Data Breaches scheme",
+  { term: "NDB",
+    full: "Notifiable Data Breaches scheme",
+    vi: "Chương trình thông báo vi phạm dữ liệu bắt buộc (Úc)",
     definition: "An Australian rule requiring organisations to tell the OAIC and affected people about breaches likely to cause serious harm.",
+    example: "",
     week: 2 },
 
-  { term: "NIST", full: "National Institute of Standards and Technology",
+  { term: "NIST",
+    full: "National Institute of Standards and Technology",
+    vi: "Viện Tiêu chuẩn và Công nghệ Quốc gia (Hoa Kỳ)",
     definition: "A US agency that publishes FIPS, the SP 800 series and the Cybersecurity Framework.",
+    example: "",
     week: 2 },
 
-  { term: "NSW", full: "New South Wales",
+  { term: "NSW",
+    full: "New South Wales",
+    vi: "Bang New South Wales (Úc)",
     definition: "An Australian state. Qantas got a court order from the NSW Supreme Court in July 2025 to stop use of the stolen data.",
+    example: "",
     week: 2 },
 
-  { term: "NVD", full: "National Vulnerability Database",
+  { term: "NVD",
+    full: "National Vulnerability Database",
+    vi: "Cơ sở dữ liệu lỗ hổng quốc gia (Hoa Kỳ)",
     definition: "NIST's database that adds detail to CVE records, including severity scores, weakness types and affected products.",
+    example: "",
     week: 2 },
 
-  { term: "OAIC", full: "Office of the Australian Information Commissioner",
+  { term: "OAIC",
+    full: "Office of the Australian Information Commissioner",
+    vi: "Văn phòng Ủy viên Thông tin Úc",
     definition: "Australia's privacy regulator. It closed its preliminary inquiries into the Qantas incident in July 2026 without taking further action at that point.",
+    example: "",
     week: 2 },
 
-  { term: "OAuth", full: "Open Authorization",
+  { term: "OAuth",
+    full: "Open Authorization",
+    vi: "Giao thức ủy quyền mở",
     definition: "A standard that lets users give an app limited access to their account without sharing their password. Attackers abused it in the Qantas-style attacks through fake connected apps.",
+    example: "Clicking \"Sign in with Google\" lets a website see your basic profile without ever seeing your Google password.",
     week: 2 },
 
-  { term: "OWASP", full: "Open Worldwide Application Security Project",
+  { term: "OWASP",
+    full: "Open Worldwide Application Security Project",
+    vi: "Dự án Bảo mật Ứng dụng Mở Toàn cầu",
     definition: "A non-profit best known for its Top 10 lists of web application and API security risks.",
+    example: "",
     week: 2 },
 
-  { term: "PCI", full: "Payment Card Industry",
+  { term: "PCI",
+    full: "Payment Card Industry",
+    vi: "Ngành thẻ thanh toán",
     definition: "The card payments industry. Its security standard is PCI DSS.",
+    example: "",
     week: 2 },
 
-  { term: "PDPA", full: "Personal Data Protection Act 2012 (Singapore)",
+  { term: "PDPA",
+    full: "Personal Data Protection Act 2012 (Singapore)",
+    vi: "Đạo luật Bảo vệ Dữ liệu Cá nhân 2012 (Singapore)",
     definition: "Singapore's data protection law, relevant to the DBS scenario.",
+    example: "",
     week: 2 },
 
-  { term: "PII", full: "Personally Identifiable Information",
+  { term: "PII",
+    full: "Personally Identifiable Information",
+    vi: "Thông tin nhận dạng cá nhân",
     definition: "Data that can identify a person, such as their name, date of birth or address.",
+    example: "Your full name, date of birth, home address and phone number.",
     week: 2 },
 
-  { term: "POS", full: "Point of Sale",
+  { term: "POS",
+    full: "Point of Sale",
+    vi: "Điểm bán hàng (máy thanh toán tại quầy)",
     definition: "Checkout terminals and software that take card payments.",
+    example: "",
     week: 2 },
 
-  { term: "PR", full: "Privileges Required",
+  { term: "PR",
+    full: "Privileges Required",
+    vi: "Đặc quyền cần có",
     definition: "CVSS metric for how much access an attacker needs before exploiting a flaw (None, Low or High).",
+    example: "",
     week: 2 },
 
-  { term: "PSPF", full: "Protective Security Policy Framework",
+  { term: "PSPF",
+    full: "Protective Security Policy Framework",
+    vi: "Khung chính sách an ninh bảo vệ (Úc)",
     definition: "Australian Government security policy that defines classifications such as OFFICIAL: Sensitive, PROTECTED, SECRET and TOP SECRET.",
+    example: "",
     week: 2 },
 
-  { term: "PV", full: "Present Value",
+  { term: "PV",
+    full: "Present Value",
+    vi: "Giá trị hiện tại",
     definition: "What a future amount of money is worth today after applying a discount rate.",
+    example: "AUD 1 million received in one year is worth about AUD 952,000 today at a 5% discount rate.",
     week: 2 },
 
-  { term: "RACI", full: "Responsible, Accountable, Consulted, Informed",
+  { term: "RACI",
+    full: "Responsible, Accountable, Consulted, Informed",
+    vi: "Ma trận Thực hiện, Chịu trách nhiệm, Tham vấn, Được thông báo",
     definition: "A table showing who does each task, who owns it, who gives input and who is kept updated.",
+    example: "For classifying a dataset, the data owner is Accountable and the IT team is Responsible.",
     week: 2 },
 
-  { term: "RFC", full: "Request for Comments",
+  { term: "RFC",
+    full: "Request for Comments",
+    vi: "Tài liệu đề xuất tiêu chuẩn Internet",
     definition: "The documents that define internet standards, such as RFC 6749 for OAuth 2.0.",
+    example: "",
     week: 2 },
 
-  { term: "RTO", full: "Recovery Time Objective",
+  { term: "RTO",
+    full: "Recovery Time Objective",
+    vi: "Thời gian khôi phục mục tiêu",
     definition: "The longest acceptable time to get a system working again after a disruption. MAS expects 4 hours or less for banks' critical systems.",
+    example: "A bank sets a 4-hour RTO for its payment system.",
     week: 2 },
 
-  { term: "SA", full: "Subsequent System Availability",
+  { term: "SA",
+    full: "Subsequent System Availability",
+    vi: "Tính sẵn sàng của hệ thống liên quan",
     definition: "CVSS v4.0 metric for the availability impact on other systems beyond the vulnerable one.",
+    example: "",
     week: 2 },
 
-  { term: "SaaS", full: "Software as a Service",
+  { term: "SaaS",
+    full: "Software as a Service",
+    vi: "Phần mềm dạng dịch vụ",
     definition: "Software run by a provider and used over the internet, such as a cloud CRM.",
+    example: "Gmail, Microsoft 365 and Salesforce.",
     week: 2 },
 
-  { term: "SC", full: "Security Category (FIPS 199)",
+  { term: "SC",
+    full: "Security Category (FIPS 199)",
+    vi: "Phân loại bảo mật (FIPS 199)",
     definition: "The FIPS 199 way of writing the impact level for confidentiality, integrity and availability. In CVSS v4.0, SC also means Subsequent System Confidentiality.",
+    example: "",
     week: 2 },
 
-  { term: "SI", full: "Subsequent System Integrity",
+  { term: "SI",
+    full: "Subsequent System Integrity",
+    vi: "Tính toàn vẹn của hệ thống liên quan",
     definition: "CVSS v4.0 metric for the integrity impact on other systems beyond the vulnerable one.",
+    example: "",
     week: 2 },
 
-  { term: "SIEM", full: "Security Information and Event Management",
+  { term: "SIEM",
+    full: "Security Information and Event Management",
+    vi: "Quản lý thông tin và sự kiện bảo mật",
     definition: "A platform that gathers logs from many systems, links related events and raises alerts.",
+    example: "A SIEM alerts the SOC when one account logs in from Vietnam and Brazil within five minutes.",
     week: 2 },
 
-  { term: "SIM", full: "Subscriber Identity Module",
+  { term: "SIM",
+    full: "Subscriber Identity Module",
+    vi: "Mô-đun nhận dạng thuê bao (thẻ SIM)",
     definition: "The card that links a phone number to a device. In SIM-swap fraud, attackers take over a victim's number to receive their login codes.",
+    example: "A fraudster convinces a mobile carrier to move your number to their SIM, then receives your bank login codes.",
     week: 2 },
 
-  { term: "SLE", full: "Single Loss Expectancy",
+  { term: "SLE",
+    full: "Single Loss Expectancy",
+    vi: "Tổn thất dự kiến cho một sự cố",
     definition: "The loss from one occurrence of a risk event, calculated as asset value multiplied by exposure factor.",
+    example: "A $100,000 server with a 40% exposure factor gives an SLE of $40,000.",
     week: 2 },
 
-  { term: "SMB", full: "Server Message Block",
+  { term: "SMB",
+    full: "Server Message Block",
+    vi: "Giao thức chia sẻ tệp (Khối thông điệp máy chủ)",
     definition: "A Windows file sharing protocol. The EternalBlue exploit targeted SMBv1.",
+    example: "",
     week: 2 },
 
-  { term: "SOC", full: "Security Operations Centre",
+  { term: "SOC",
+    full: "Security Operations Centre",
+    vi: "Trung tâm điều hành an ninh mạng",
     definition: "The team that monitors, detects and responds to security events, usually around the clock.",
+    example: "",
     week: 2 },
 
-  { term: "SP", full: "Special Publication",
+  { term: "SP",
+    full: "Special Publication",
+    vi: "Ấn phẩm đặc biệt (của NIST)",
     definition: "A NIST document series, such as SP 800-30 on risk assessment, SP 800-53 on controls and SP 800-61 on incident response.",
+    example: "",
     week: 2 },
 
-  { term: "SQL", full: "Structured Query Language",
+  { term: "SQL",
+    full: "Structured Query Language",
+    vi: "Ngôn ngữ truy vấn có cấu trúc",
     definition: "The language used to query databases. SQL injection sneaks harmful SQL commands in through unchecked input.",
+    example: "A search box that passes user input straight into a database query can be abused with SQL injection.",
     week: 2 },
 
-  { term: "STRIDE", full: "Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege",
+  { term: "STRIDE",
+    full: "Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege",
+    vi: "Giả mạo, Can thiệp, Chối bỏ, Lộ lọt thông tin, Từ chối dịch vụ, Leo thang đặc quyền",
     definition: "A Microsoft threat modelling checklist. Each letter is a threat type that breaks one security property.",
+    example: "Pretending to be IT support is Spoofing; flooding a website with traffic is Denial of service.",
     week: 2 },
 
-  { term: "TLS", full: "Transport Layer Security",
+  { term: "TLS",
+    full: "Transport Layer Security",
+    vi: "Bảo mật tầng truyền tải",
     definition: "The protocol that encrypts data while it travels across a network, as used in HTTPS.",
+    example: "The padlock in your browser's address bar shows the site uses TLS.",
     week: 2 },
 
-  { term: "TRM", full: "Technology Risk Management",
+  { term: "TRM",
+    full: "Technology Risk Management",
+    vi: "Quản lý rủi ro công nghệ",
     definition: "As in the MAS TRM Guidelines (2021), which set out what MAS expects from financial institutions on technology risk, resilience and cyber security.",
+    example: "",
     week: 2 },
 
-  { term: "UI", full: "User Interaction",
+  { term: "UI",
+    full: "User Interaction",
+    vi: "Tương tác người dùng",
     definition: "CVSS metric for whether someone other than the attacker has to do something for the attack to work.",
+    example: "",
     week: 2 },
 
-  { term: "UNC", full: "Uncategorised threat group",
+  { term: "UNC",
+    full: "Uncategorised threat group",
+    vi: "Nhóm đe dọa chưa được phân loại",
     definition: "A Google/Mandiant label for attack activity not yet linked to a known group, such as UNC6040 and UNC6240.",
+    example: "",
     week: 2 },
 
-  { term: "USB", full: "Universal Serial Bus",
+  { term: "USB",
+    full: "Universal Serial Bus",
+    vi: "Chuẩn kết nối USB (Bus nối tiếp đa năng)",
     definition: "The standard for removable drives and accessories. A common route for data leaks and malware.",
+    example: "",
     week: 2 },
 
-  { term: "USD", full: "United States Dollar",
+  { term: "USD",
+    full: "United States Dollar",
+    vi: "Đô la Mỹ",
     definition: "The currency used in IBM's Cost of a Data Breach figures.",
+    example: "",
     week: 2 },
 
-  { term: "VA", full: "Vulnerable System Availability",
+  { term: "VA",
+    full: "Vulnerable System Availability",
+    vi: "Tính sẵn sàng của hệ thống có lỗ hổng",
     definition: "CVSS v4.0 metric for the availability impact on the vulnerable system itself.",
+    example: "",
     week: 2 },
 
-  { term: "VC", full: "Vulnerable System Confidentiality",
+  { term: "VC",
+    full: "Vulnerable System Confidentiality",
+    vi: "Tính bảo mật của hệ thống có lỗ hổng",
     definition: "CVSS v4.0 metric for the confidentiality impact on the vulnerable system itself.",
+    example: "",
     week: 2 },
 
-  { term: "VI", full: "Vulnerable System Integrity",
+  { term: "VI",
+    full: "Vulnerable System Integrity",
+    vi: "Tính toàn vẹn của hệ thống có lỗ hổng",
     definition: "CVSS v4.0 metric for the integrity impact on the vulnerable system itself.",
+    example: "",
     week: 2 },
 
-  { term: "VPN", full: "Virtual Private Network",
+  { term: "VPN",
+    full: "Virtual Private Network",
+    vi: "Mạng riêng ảo",
     definition: "An encrypted connection over the internet. Attackers also use commercial VPNs to hide where they are.",
+    example: "Staff connect to the office network from home through a VPN.",
     week: 2 },
 
-  { term: "XP", full: "Experience Points",
+  { term: "XP",
+    full: "Experience Points",
+    vi: "Điểm kinh nghiệm",
     definition: "Points earned in the course website for completing activities.",
+    example: "",
     week: 2 },
 
-  { term: "XSS", full: "Cross-Site Scripting",
+  { term: "XSS",
+    full: "Cross-Site Scripting",
+    vi: "Tấn công chèn mã độc liên trang",
     definition: "A web attack that plants harmful scripts in pages that other users then load.",
+    example: "An attacker posts a forum comment containing a script that runs in other visitors' browsers.",
     week: 2 },
 
-  { term: "Asset", full: "",
+  { term: "Asset",
+    full: "",
+    vi: "Tài sản",
     definition: "Anything of value an organisation needs to reach its goals, including data, software, hardware, people and reputation.",
+    example: "A customer database, staff laptops and the company's reputation.",
     week: 2 },
 
-  { term: "Asset inventory", full: "",
+  { term: "Asset inventory",
+    full: "",
+    vi: "Danh mục tài sản (sổ đăng ký tài sản)",
     definition: "A register listing every valuable asset, where it lives, who owns it and how it is protected. Also called an asset register.",
+    example: "A spreadsheet listing each system with its owner, location and classification.",
     week: 2 },
 
-  { term: "Attack vector", full: "",
+  { term: "Attack vector",
+    full: "",
+    vi: "Vectơ tấn công (con đường tấn công)",
     definition: "The route or method an attacker uses to get in, such as a phishing email, a stolen password or a vulnerable app.",
+    example: "A phishing email with a link to a fake login page.",
     week: 2 },
 
-  { term: "Defence in depth", full: "",
+  { term: "Defence in depth",
+    full: "",
+    vi: "Phòng thủ nhiều lớp (phòng thủ chiều sâu)",
     definition: "Layering several independent controls so that if one fails, the others still protect the asset.",
+    example: "A firewall, MFA, encryption and monitoring working together to protect customer data.",
     week: 2 },
 
-  { term: "Threat agent", full: "",
+  { term: "Threat agent",
+    full: "",
+    vi: "Tác nhân đe dọa",
     definition: "The person or thing that triggers a threat, either deliberately (a criminal) or by accident (a staff mistake).",
+    example: "A cybercriminal group, or an employee who accidentally emails a file to the wrong person.",
     week: 2 },
 
-  { term: "Vishing", full: "Voice phishing",
+  { term: "Vishing",
+    full: "Voice phishing",
+    vi: "Lừa đảo qua điện thoại (lừa đảo bằng giọng nói)",
     definition: "Social engineering carried out over the phone, often by pretending to be IT support or a bank.",
+    example: "In the 2025 Qantas incident, a caller pretended to be IT support to trick a contact-centre worker.",
     week: 2 },
 
-  /* TEMPLATE: copy the 3 lines below, paste them above this comment, fill them in
-  { term: "", full: "",
+  /* TEMPLATE: copy the 6 lines below, paste them above this comment, fill them in
+  { term: "",
+    full: "",
+    vi: "",
     definition: "",
+    example: "",
     week: 3 },
   */
 ];
@@ -497,6 +847,7 @@ const TERMS = [
     --bg: #f6f7fb; --surface: #ffffff; --surface-2: #f0f2f8;
     --text: #141826; --muted: #5d6478; --border: #e2e5ef; --faint: #c9cedc;
     --accent: #3d5afe; --accent-soft: #e8ecff; --mark: #ffe58a;
+    --vi: #c2185b; --vi-soft: #fde7ef;
     --new: #0f9d58; --new-soft: #e3f6ec;
     --shadow: 0 1px 2px rgba(20,24,38,.04), 0 6px 24px rgba(20,24,38,.06);
   }
@@ -505,6 +856,7 @@ const TERMS = [
       --bg: #0e1117; --surface: #161a23; --surface-2: #1d2230;
       --text: #e8eaf2; --muted: #9aa1b5; --border: #2a3040; --faint: #3a4152;
       --accent: #7c93ff; --accent-soft: #232b4a; --mark: #6b5a12;
+      --vi: #f48fb1; --vi-soft: #3a1d2a;
       --new: #4cd38a; --new-soft: #17301f;
       --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 24px rgba(0,0,0,.25);
     }
@@ -513,6 +865,7 @@ const TERMS = [
     --bg: #0e1117; --surface: #161a23; --surface-2: #1d2230;
     --text: #e8eaf2; --muted: #9aa1b5; --border: #2a3040; --faint: #3a4152;
     --accent: #7c93ff; --accent-soft: #232b4a; --mark: #6b5a12;
+    --vi: #f48fb1; --vi-soft: #3a1d2a;
     --new: #4cd38a; --new-soft: #17301f;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 24px rgba(0,0,0,.25);
   }
@@ -540,17 +893,26 @@ const TERMS = [
   .chip:disabled { color: var(--faint); cursor: default; }
   .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
   .chip .n { opacity: .7; margin-left: 4px; font-size: 12px; }
+  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
+  .seg button { border: 0; background: none; color: var(--muted); font: inherit; font-size: 13px; padding: 4px 10px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
   .letters { display: flex; flex-wrap: wrap; gap: 2px; }
   .letters button { width: 28px; height: 28px; border: 0; border-radius: 6px; background: none; color: var(--text); font: 600 13px Inter, sans-serif; cursor: pointer; }
   .letters button:hover:not(:disabled) { background: var(--accent-soft); color: var(--accent); }
   .letters button:disabled { color: var(--border); cursor: default; }
-  .count { color: var(--muted); font-size: 13px; }
+  .count { color: var(--muted); font-size: 13px; margin-left: auto; }
 
-  .group-letter { font: 700 13px "JetBrains Mono", monospace; color: var(--accent); margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); scroll-margin-top: 190px; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; box-shadow: var(--shadow); display: grid; grid-template-columns: 220px 1fr; gap: 6px 24px; }
-  .term { font-weight: 700; font-size: 16px; word-break: break-word; }
+  .group-head { font: 700 13px "JetBrains Mono", monospace; color: var(--accent); margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); scroll-margin-top: 200px; display: flex; justify-content: space-between; }
+  .group-head span { color: var(--muted); font-weight: 500; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; box-shadow: var(--shadow); display: grid; grid-template-columns: 240px 1fr; gap: 6px 24px; }
+  .term { font-weight: 700; font-size: 17px; word-break: break-word; }
   .full { color: var(--muted); font-size: 13px; margin-top: 2px; }
-  .def { margin: 0; }
+  .vi { display: inline-block; margin-top: 8px; font-size: 13.5px; color: var(--vi); background: var(--vi-soft); border-radius: 6px; padding: 3px 8px; }
+  .vi b { font: 600 10.5px "JetBrains Mono", monospace; letter-spacing: .05em; margin-right: 6px; opacity: .8; }
+  .label { font: 600 10.5px "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .def { margin: 2px 0 0; }
+  .ex { margin-top: 10px; padding: 8px 12px; border-left: 3px solid var(--accent); background: var(--surface-2); border-radius: 0 8px 8px 0; font-size: 14px; }
+  .ex p { margin: 2px 0 0; }
   .tags { grid-column: 2; display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
   .tag { font-size: 11.5px; padding: 2px 8px; border-radius: 6px; background: var(--surface-2); color: var(--muted); }
   .tag.new { background: var(--new-soft); color: var(--new); font-weight: 600; }
@@ -563,7 +925,7 @@ const TERMS = [
     .card { grid-template-columns: 1fr; }
     .tags { grid-column: 1; }
     .search kbd { display: none; }
-    .group-letter { scroll-margin-top: 260px; }
+    .group-head { scroll-margin-top: 300px; }
   }
 </style>
 </head>
@@ -581,12 +943,16 @@ const TERMS = [
   <div class="controls">
     <label class="search">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="Search terms, full forms or explanations" autocomplete="off">
+      <input id="q" type="search" placeholder="Search in English or Vietnamese" autocomplete="off">
       <button class="clear" id="clear" aria-label="Clear search">×</button>
       <kbd>/</kbd>
     </label>
     <div class="row" id="filters"></div>
-    <div class="row" style="justify-content:space-between">
+    <div class="row">
+      <div class="seg" id="groupBy">
+        <button data-g="letter" aria-pressed="true">A to Z</button>
+        <button data-g="week" aria-pressed="false">By week</button>
+      </div>
       <div class="letters" id="letters"></div>
       <span class="count" id="count"></span>
     </div>
@@ -602,14 +968,14 @@ const TERMS = [
   const data = TERMS.filter(t => t.term && t.definition)
     .sort((a, b) => a.term.localeCompare(b.term, undefined, { sensitivity: "base" }));
   const latestWeek = Math.max(0, ...data.map(t => +t.week || 0));
-  let activeFilter = "all";
+  let activeFilter = "all", groupBy = "letter";
 
   $("title").textContent = SITE_TITLE;
   $("subtitle").textContent = SITE_SUBTITLE;
   $("footer").textContent = latestWeek ? "Last updated: Week " + latestWeek : "";
   document.title = SITE_TITLE;
 
-  // Filter chips: All + Week 1 to TOTAL_WEEKS (weeks with no terms yet are greyed out)
+  // Week chips: All + Week 1 to TOTAL_WEEKS (weeks with no terms yet are greyed out)
   const perWeek = w => data.filter(t => +t.week === w).length;
   let chipHtml = `<button class="chip" data-k="all" aria-pressed="true">All<span class="n">${data.length}</span></button>`;
   for (let w = 1; w <= TOTAL_WEEKS; w++) {
@@ -623,26 +989,52 @@ const TERMS = [
     $("filters").querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
     render();
   });
+  $("groupBy").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    groupBy = b.dataset.g;
+    $("groupBy").querySelectorAll("button").forEach(c => c.setAttribute("aria-pressed", c === b));
+    render();
+  });
 
   function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c])); }
-  function norm(s) { return String(s ?? "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+  // Lowercase and strip accents so "bao mat" finds "bảo mật"
+  function norm(s) { return String(s ?? "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d"); }
   function highlight(text, words) {
     const html = esc(text);
     if (!words.length) return html;
     const re = new RegExp("(" + words.map(w => esc(w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")", "gi");
     return html.replace(re, "<mark>$1</mark>");
   }
-  function letterOf(t) { const c = t.term.trim()[0].toUpperCase(); return /[A-Z]/.test(c) ? c : "#"; }
+  function letterOf(t) { const c = norm(t.term.trim()[0]).toUpperCase(); return /[A-Z]/.test(c) ? c : "#"; }
+
+  function card(t, words, anchor) {
+    return `<article class="card"${anchor}>
+      <div>
+        <div class="term">${highlight(t.term, words)}</div>
+        ${t.full ? `<div class="full">${highlight(t.full, words)}</div>` : ""}
+        ${t.vi ? `<div class="vi"><b>VI</b>${highlight(t.vi, words)}</div>` : ""}
+      </div>
+      <div>
+        <div class="label">Definition</div>
+        <p class="def">${highlight(t.definition, words)}</p>
+        ${t.example ? `<div class="ex"><div class="label">Example</div><p>${highlight(t.example, words)}</p></div>` : ""}
+      </div>
+      <div class="tags">
+        ${+t.week === latestWeek ? `<span class="tag new">New</span>` : ""}
+        ${t.week ? `<span class="tag">Week ${esc(t.week)}</span>` : ""}
+      </div></article>`;
+  }
 
   function render() {
     const raw = $("q").value.trim();
-    const words = norm(raw).split(/\s+/).filter(Boolean);
+    const words = raw.toLowerCase().split(/\s+/).filter(Boolean);
+    const nwords = words.map(norm);
     $("clear").style.display = raw ? "block" : "none";
 
     const rows = data.filter(t => {
       if (activeFilter !== "all" && String(t.week) !== activeFilter) return false;
-      const hay = norm([t.term, t.full, t.definition].join(" "));
-      return words.every(w => hay.includes(w));
+      const hay = norm([t.term, t.full, t.vi, t.definition, t.example].join(" "));
+      return nwords.every(w => hay.includes(w));
     });
 
     if (words.length) {
@@ -653,7 +1045,9 @@ const TERMS = [
 
     $("count").textContent = `${rows.length} of ${data.length} terms`;
 
+    const byLetter = groupBy === "letter";
     const present = new Set(rows.map(letterOf));
+    $("letters").style.display = byLetter ? "" : "none";
     $("letters").innerHTML = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(L =>
       `<button data-l="${L}" ${present.has(L) ? "" : "disabled"}>${L}</button>`).join("");
 
@@ -662,21 +1056,26 @@ const TERMS = [
       return;
     }
 
-    let html = "", last = "";
-    const seen = new Set();
-    for (const t of rows) {
-      const L = letterOf(t);
-      let anchor = "";
-      if (!words.length && L !== last) { html += `<div class="group-letter" id="L-${L}">${L}</div>`; last = L; }
-      else if (words.length && !seen.has(L)) { anchor = ` id="L-${L}"`; seen.add(L); }
-      html += `<article class="card"${anchor}>
-        <div><div class="term">${highlight(t.term, words)}</div>
-        ${t.full ? `<div class="full">${highlight(t.full, words)}</div>` : ""}</div>
-        <p class="def">${highlight(t.definition, words)}</p>
-        <div class="tags">
-          ${+t.week === latestWeek ? `<span class="tag new">New</span>` : ""}
-          ${t.week ? `<span class="tag">Week ${esc(t.week)}</span>` : ""}
-        </div></article>`;
+    let html = "";
+    if (byLetter) {
+      let last = "";
+      const seen = new Set();
+      for (const t of rows) {
+        const L = letterOf(t);
+        let anchor = "";
+        if (!words.length && L !== last) { html += `<div class="group-head" id="L-${L}">${L}</div>`; last = L; }
+        else if (words.length && !seen.has(L)) { anchor = ` id="L-${L}"`; seen.add(L); }
+        html += card(t, words, anchor);
+      }
+    } else {
+      for (let w = 1; w <= TOTAL_WEEKS; w++) {
+        const group = rows.filter(t => +t.week === w);
+        if (!group.length) continue;
+        html += `<div class="group-head">Week ${w}<span>${group.length} terms</span></div>`;
+        html += group.map(t => card(t, words, "")).join("");
+      }
+      const noWeek = rows.filter(t => !(+t.week >= 1 && +t.week <= TOTAL_WEEKS));
+      if (noWeek.length) html += `<div class="group-head">No week set</div>` + noWeek.map(t => card(t, words, "")).join("");
     }
     $("list").innerHTML = html;
   }
